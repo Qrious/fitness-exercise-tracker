@@ -25,14 +25,14 @@ struct ProgressChartView: View {
                             x: .value("Day", dataPoint.dayNumber),
                             y: .value("Weight", dataPoint.maxWeight)
                         )
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(Color.primaryBlue)
                         .interpolationMethod(.catmullRom)
 
                         PointMark(
                             x: .value("Day", dataPoint.dayNumber),
                             y: .value("Weight", dataPoint.maxWeight)
                         )
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(Color.primaryBlue)
                     }
                     .frame(height: 150)
                     .chartXAxis {
@@ -47,10 +47,11 @@ struct ProgressChartView: View {
                 if let maxWeight = dataPoints.map({ $0.maxWeight }).max() {
                     HStack {
                         Image(systemName: "trophy.fill")
-                            .foregroundStyle(.yellow)
+                            .foregroundStyle(Color.accentYellow)
                         Text("Personal Record: \(Int(maxWeight)) lbs")
                             .font(.subheadline)
                             .fontWeight(.medium)
+                            .foregroundStyle(Color.darkText)
                     }
                     .padding(.vertical, DesignConstants.spacingSmall)
                 }

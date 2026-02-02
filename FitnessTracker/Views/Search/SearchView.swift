@@ -9,21 +9,18 @@ struct SearchView: View {
 
     var body: some View {
         ZStack {
-            // Background gradient
-            LinearGradient(
-                colors: [.green.opacity(0.3), .teal.opacity(0.3)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            // Modern light background
+            Color.lightBackground
+                .ignoresSafeArea()
 
             VStack(spacing: 0) {
                 // Header with Search
-                GlassCard {
+                GlassCard(backgroundColor: .white) {
                     VStack(spacing: DesignConstants.spacingMedium) {
                         Text("Search")
                             .font(.title2)
                             .fontWeight(.bold)
+                            .foregroundStyle(Color.darkText)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
                         HStack {
@@ -45,7 +42,7 @@ struct SearchView: View {
                             }
                         }
                         .padding(DesignConstants.spacingMedium)
-                        .background(.regularMaterial)
+                        .background(Color(uiColor: .systemGray6))
                         .cornerRadius(DesignConstants.cornerRadiusSmall)
                     }
                 }
@@ -167,13 +164,14 @@ struct SearchResultCard: View {
 
     var body: some View {
         Button(action: action) {
-            GlassCard {
+            GlassCard(backgroundColor: .white) {
                 VStack(alignment: .leading, spacing: DesignConstants.spacingMedium) {
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(result.exercise.name)
                                 .font(.headline)
                                 .fontWeight(.semibold)
+                                .foregroundStyle(Color.darkText)
 
                             Text("Day \(result.workout.dayNumber) • \(result.workout.date.historyFormatted)")
                                 .font(.subheadline)
@@ -192,6 +190,7 @@ struct SearchResultCard: View {
                                 Text("\(result.exercise.setsArray.count)")
                                     .font(.title3)
                                     .fontWeight(.semibold)
+                                    .foregroundStyle(Color.darkText)
                                 Text("Sets")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
@@ -202,6 +201,7 @@ struct SearchResultCard: View {
                                     Text("\(Int(maxWeight))")
                                         .font(.title3)
                                         .fontWeight(.semibold)
+                                        .foregroundStyle(Color.darkText)
                                     Text("Max Weight")
                                         .font(.caption)
                                         .foregroundStyle(.secondary)

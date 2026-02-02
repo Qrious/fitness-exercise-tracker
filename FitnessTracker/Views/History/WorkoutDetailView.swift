@@ -7,24 +7,21 @@ struct WorkoutDetailView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background gradient
-                LinearGradient(
-                    colors: [.purple.opacity(0.3), .pink.opacity(0.3)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea()
+                // Modern light background
+                Color.lightBackground
+                    .ignoresSafeArea()
 
                 ScrollView {
                     VStack(spacing: DesignConstants.spacingLarge) {
                         // Summary Card
-                        GlassCard {
+                        GlassCard(backgroundColor: .white) {
                             VStack(alignment: .leading, spacing: DesignConstants.spacingMedium) {
                                 HStack {
                                     VStack(alignment: .leading, spacing: 4) {
                                         Text("Day \(workout.dayNumber)")
                                             .font(.title)
                                             .fontWeight(.bold)
+                                            .foregroundStyle(Color.darkText)
 
                                         Text(workout.date.formatted)
                                             .font(.subheadline)
@@ -82,6 +79,7 @@ struct StatisticView: View {
             Text(value)
                 .font(.title2)
                 .fontWeight(.semibold)
+                .foregroundStyle(Color.darkText)
             Text(label)
                 .font(.caption)
                 .foregroundStyle(.secondary)
@@ -93,11 +91,12 @@ struct ExerciseDetailCard: View {
     let exercise: ExerciseEntity
 
     var body: some View {
-        GlassCard {
+        GlassCard(backgroundColor: .white) {
             VStack(alignment: .leading, spacing: DesignConstants.spacingMedium) {
                 Text(exercise.name)
                     .font(.headline)
                     .fontWeight(.semibold)
+                    .foregroundStyle(Color.darkText)
 
                 if !exercise.setsArray.isEmpty {
                     VStack(spacing: DesignConstants.spacingSmall) {

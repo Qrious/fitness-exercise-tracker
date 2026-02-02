@@ -10,20 +10,17 @@ struct StatisticsView: View {
 
     var body: some View {
         ZStack {
-            // Background gradient
-            LinearGradient(
-                colors: [.orange.opacity(0.3), .red.opacity(0.3)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            // Modern light background
+            Color.lightBackground
+                .ignoresSafeArea()
 
             VStack(spacing: 0) {
                 // Header
-                GlassCard {
+                GlassCard(backgroundColor: .white) {
                     Text("Statistics")
                         .font(.title2)
                         .fontWeight(.bold)
+                        .foregroundStyle(Color.darkText)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.horizontal)
@@ -64,10 +61,11 @@ struct StatisticsView: View {
         ScrollView {
             VStack(spacing: DesignConstants.spacingLarge) {
                 // Summary Stats
-                GlassCard {
+                GlassCard(backgroundColor: .white) {
                     VStack(spacing: DesignConstants.spacingMedium) {
                         Text("Overall Stats")
                             .font(.headline)
+                            .foregroundStyle(Color.darkText)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
                         HStack(spacing: DesignConstants.spacingLarge) {
@@ -91,17 +89,18 @@ struct StatisticsView: View {
 
                 // Volume Over Time
                 if !viewModel.volumeOverTime().isEmpty {
-                    GlassCard {
+                    GlassCard(backgroundColor: .white) {
                         VStack(alignment: .leading, spacing: DesignConstants.spacingMedium) {
                             Text("Volume Over Time")
                                 .font(.headline)
+                                .foregroundStyle(Color.darkText)
 
                             Chart(viewModel.volumeOverTime()) { dataPoint in
                                 LineMark(
                                     x: .value("Day", dataPoint.dayNumber),
                                     y: .value("Volume", dataPoint.volume)
                                 )
-                                .foregroundStyle(.blue)
+                                .foregroundStyle(Color.primaryBlue)
                                 .interpolationMethod(.catmullRom)
 
                                 AreaMark(
@@ -110,7 +109,7 @@ struct StatisticsView: View {
                                 )
                                 .foregroundStyle(
                                     LinearGradient(
-                                        colors: [.blue.opacity(0.3), .blue.opacity(0.05)],
+                                        colors: [Color.primaryBlue.opacity(0.3), Color.primaryBlue.opacity(0.05)],
                                         startPoint: .top,
                                         endPoint: .bottom
                                     )
@@ -130,10 +129,11 @@ struct StatisticsView: View {
 
                 // Exercise Progress
                 if !viewModel.exerciseNames.isEmpty {
-                    GlassCard {
+                    GlassCard(backgroundColor: .white) {
                         VStack(alignment: .leading, spacing: DesignConstants.spacingMedium) {
                             Text("Exercise Progress")
                                 .font(.headline)
+                                .foregroundStyle(Color.darkText)
 
                             Picker("Exercise", selection: $viewModel.selectedExercise) {
                                 ForEach(viewModel.exerciseNames, id: \.self) { name in

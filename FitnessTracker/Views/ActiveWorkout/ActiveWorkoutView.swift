@@ -13,13 +13,9 @@ struct ActiveWorkoutView: View {
 
     var body: some View {
         ZStack {
-            // Background gradient
-            LinearGradient(
-                colors: [.blue.opacity(0.3), .purple.opacity(0.3)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            // Modern light background
+            Color.lightBackground
+                .ignoresSafeArea()
 
             if viewModel.isWorkoutActive {
                 activeWorkoutContent
@@ -33,11 +29,12 @@ struct ActiveWorkoutView: View {
         VStack(spacing: DesignConstants.spacingXLarge) {
             Image(systemName: "dumbbell.fill")
                 .font(.system(size: 64))
-                .foregroundStyle(.blue)
+                .foregroundStyle(Color.primaryBlue)
 
             Text("Ready to Work Out?")
                 .font(.largeTitle)
                 .fontWeight(.bold)
+                .foregroundStyle(Color.darkText)
 
             Button(action: viewModel.startWorkout) {
                 HStack {
@@ -45,10 +42,13 @@ struct ActiveWorkoutView: View {
                     Text("Start Workout")
                 }
                 .font(.headline)
+                .foregroundStyle(.white)
                 .padding(.horizontal, DesignConstants.spacingXLarge)
                 .padding(.vertical, DesignConstants.spacingLarge)
             }
-            .buttonStyle(.borderedProminent)
+            .background(Color.primaryBlue)
+            .cornerRadius(DesignConstants.cornerRadiusMedium)
+            .buttonStyle(.plain)
             .controlSize(.large)
         }
     }
@@ -56,11 +56,12 @@ struct ActiveWorkoutView: View {
     private var activeWorkoutContent: some View {
         VStack(spacing: 0) {
             // Header
-            GlassCard {
+            GlassCard(backgroundColor: .white) {
                 VStack(alignment: .leading, spacing: DesignConstants.spacingSmall) {
                     Text("Workout in Progress")
                         .font(.title2)
                         .fontWeight(.bold)
+                        .foregroundStyle(Color.darkText)
 
                     if let workout = viewModel.currentWorkout {
                         Text("Day \(workout.dayNumber)")
@@ -120,10 +121,11 @@ struct ActiveWorkoutView: View {
                     viewModel.finishWorkout()
                 }
                 .buttonStyle(.borderedProminent)
+                .tint(Color.primaryBlue)
                 .disabled(viewModel.exercises.isEmpty)
             }
             .padding()
-            .liquidGlass(cornerRadius: 0, addGlow: false)
+            .background(Color(uiColor: .systemBackground))
         }
         .sheet(isPresented: $showingAddExercise) {
             AddExerciseSheet(viewModel: viewModel)

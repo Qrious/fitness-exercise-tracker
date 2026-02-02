@@ -8,13 +8,14 @@ struct ExerciseCard: View {
     let onRemoveExercise: () -> Void
 
     var body: some View {
-        GlassCard(padding: DesignConstants.spacingLarge) {
+        GlassCard(backgroundColor: .white) {
             VStack(alignment: .leading, spacing: DesignConstants.spacingMedium) {
                 // Header
                 HStack {
                     Text(exercise.name)
                         .font(.title3)
                         .fontWeight(.semibold)
+                        .foregroundStyle(Color.darkText)
 
                     Spacer()
 
@@ -52,7 +53,9 @@ struct ExerciseCard: View {
                     .padding(.vertical, DesignConstants.spacingMedium)
                 }
                 .buttonStyle(.borderedProminent)
+                .tint(Color.primaryBlue)
             }
         }
+        .padding(.horizontal)
     }
 }

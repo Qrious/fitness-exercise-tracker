@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Custom tab bar with dynamic height based on scroll state
+/// Modern tab bar with circular icon buttons
 struct DynamicTabBar: View {
     @Binding var selectedTab: Int
     @Binding var isCompact: Bool
@@ -9,7 +9,7 @@ struct DynamicTabBar: View {
     let tabs: [TabItem]
 
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: DesignConstants.tabBarSpacing) {
             ForEach(Array(tabs.enumerated()), id: \.offset) { index, tab in
                 TabButton(
                     tab: tab,
@@ -25,8 +25,18 @@ struct DynamicTabBar: View {
                 }
             }
         }
-        .frame(height: isCompact ? DesignConstants.tabBarHeightCompact : DesignConstants.tabBarHeightExpanded)
-        .liquidGlass(cornerRadius: 0, addGlow: false)
+        .padding(.horizontal, DesignConstants.spacingXLarge)
+        .padding(.vertical, DesignConstants.spacingMedium)
+        .frame(height: DesignConstants.tabBarHeightCompact)
+        .background(
+            Color(uiColor: .systemBackground)
+                .shadow(
+                    color: .black.opacity(0.05),
+                    radius: 10,
+                    x: 0,
+                    y: -2
+                )
+        )
         .animation(
             reduceMotion ? .none : .spring(
                 response: DesignConstants.springResponse,
@@ -45,20 +55,19 @@ struct TabButton: View {
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: DesignConstants.spacingXSmall) {
+            ZStack {
+                // Circular background
+                Circle()
+                    .fill(isSelected ? Color.primaryBlue : Color(uiColor: .systemGray5))
+                    .frame(width: DesignConstants.tabBarIconSize, height: DesignConstants.tabBarIconSize)
+
+                // Icon
                 Image(systemName: isSelected ? tab.selectedIcon : tab.icon)
                     .font(.system(size: 24))
                     .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(isSelected ? Color.accentColor : .secondary)
-
-                if !isCompact {
-                    Text(tab.title)
-                        .font(.caption)
-                        .foregroundStyle(isSelected ? Color.accentColor : .secondary)
-                }
+                    .foregroundStyle(isSelected ? .white : Color(uiColor: .systemGray))
             }
             .frame(maxWidth: .infinity)
-            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }

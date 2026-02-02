@@ -10,20 +10,17 @@ struct HistoryView: View {
 
     var body: some View {
         ZStack {
-            // Background gradient
-            LinearGradient(
-                colors: [.purple.opacity(0.3), .pink.opacity(0.3)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            // Modern light background
+            Color.lightBackground
+                .ignoresSafeArea()
 
             VStack(spacing: 0) {
                 // Header
-                GlassCard {
+                GlassCard(backgroundColor: .white) {
                     Text("Workout History")
                         .font(.title2)
                         .fontWeight(.bold)
+                        .foregroundStyle(Color.darkText)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.horizontal)
@@ -84,13 +81,14 @@ struct WorkoutHistoryCard: View {
 
     var body: some View {
         Button(action: action) {
-            GlassCard {
+            GlassCard(backgroundColor: .white) {
                 VStack(alignment: .leading, spacing: DesignConstants.spacingMedium) {
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Day \(workout.dayNumber)")
                                 .font(.title2)
                                 .fontWeight(.bold)
+                                .foregroundStyle(Color.darkText)
 
                             Text(workout.date.historyFormatted)
                                 .font(.subheadline)
@@ -108,6 +106,7 @@ struct WorkoutHistoryCard: View {
                             Text("\(workout.exercisesArray.count)")
                                 .font(.title3)
                                 .fontWeight(.semibold)
+                                .foregroundStyle(Color.darkText)
                             Text("Exercises")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
@@ -117,6 +116,7 @@ struct WorkoutHistoryCard: View {
                             Text("\(workout.totalSets)")
                                 .font(.title3)
                                 .fontWeight(.semibold)
+                                .foregroundStyle(Color.darkText)
                             Text("Sets")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
@@ -126,6 +126,7 @@ struct WorkoutHistoryCard: View {
                             Text("\(Int(workout.totalVolume))")
                                 .font(.title3)
                                 .fontWeight(.semibold)
+                                .foregroundStyle(Color.darkText)
                             Text("Volume")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)

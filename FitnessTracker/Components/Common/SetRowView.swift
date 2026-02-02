@@ -20,6 +20,7 @@ struct SetRowView: View {
                 VStack(alignment: .trailing, spacing: 2) {
                     Text("\(Int(weight))")
                         .font(.headline)
+                        .foregroundStyle(Color.darkText)
                     Text("lbs")
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -33,6 +34,7 @@ struct SetRowView: View {
                 VStack(alignment: .trailing, spacing: 2) {
                     Text("\(reps)")
                         .font(.headline)
+                        .foregroundStyle(Color.darkText)
                     Text("reps")
                         .font(.caption)
                         .foregroundStyle(.secondary)

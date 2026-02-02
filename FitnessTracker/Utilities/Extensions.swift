@@ -27,6 +27,16 @@ extension Date {
 
 // MARK: - Color Extensions
 extension Color {
+    // Modern color palette matching the design
+    static let primaryBlue = Color(red: 0.4, green: 0.7, blue: 0.9) // Light blue/teal
+    static let accentYellow = Color(red: 0.9, green: 0.95, blue: 0.5) // Lime/yellow accent
+    static let cardBlue = Color(red: 0.55, green: 0.8, blue: 0.95) // Card blue background
+    static let cardGreen = Color(red: 0.7, green: 0.9, blue: 0.5) // Card green/lime background
+    static let cardPurple = Color(red: 0.6, green: 0.5, blue: 0.9) // Card purple background
+    static let darkText = Color(red: 0.1, green: 0.1, blue: 0.1) // Dark text
+    static let lightBackground = Color(red: 0.97, green: 0.97, blue: 0.98) // Light gray background
+
+    // Legacy glass colors (keeping for backward compatibility)
     static let glassBackground = Color(white: 0.5, opacity: 0.1)
     static let glassBorder = Color.white.opacity(0.2)
 }
