@@ -1,25 +1,28 @@
 import SwiftUI
 
-/// Reusable glass card component
+/// Reusable modern card component
 struct GlassCard<Content: View>: View {
     let content: Content
     var cornerRadius: CGFloat = DesignConstants.cornerRadiusMedium
-    var padding: CGFloat = DesignConstants.spacingLarge
+    var padding: CGFloat = DesignConstants.cardPadding
+    var backgroundColor: Color? = nil
 
     init(
         cornerRadius: CGFloat = DesignConstants.cornerRadiusMedium,
-        padding: CGFloat = DesignConstants.spacingLarge,
+        padding: CGFloat = DesignConstants.cardPadding,
+        backgroundColor: Color? = nil,
         @ViewBuilder content: () -> Content
     ) {
         self.cornerRadius = cornerRadius
         self.padding = padding
+        self.backgroundColor = backgroundColor
         self.content = content()
     }
 
     var body: some View {
         content
             .padding(padding)
-            .liquidGlass(cornerRadius: cornerRadius)
+            .liquidGlass(cornerRadius: cornerRadius, backgroundColor: backgroundColor)
     }
 }
 
