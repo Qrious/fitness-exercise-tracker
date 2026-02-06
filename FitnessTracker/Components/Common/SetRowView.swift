@@ -21,7 +21,7 @@ struct SetRowView: View {
                     Text("\(Int(weight))")
                         .font(.headline)
                         .foregroundStyle(Color.darkText)
-                    Text("lbs")
+                    Text("kg")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }

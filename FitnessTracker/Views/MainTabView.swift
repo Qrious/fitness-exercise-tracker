@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreData
 
 struct MainTabView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -6,7 +7,7 @@ struct MainTabView: View {
     @State private var isTabBarCompact = false
 
     let tabs = [
-        TabItem(title: "Workout", icon: "dumbbell", selectedIcon: "dumbbell.fill"),
+        TabItem(title: "Home", icon: "house", selectedIcon: "house.fill"),
         TabItem(title: "History", icon: "calendar", selectedIcon: "calendar"),
         TabItem(title: "Stats", icon: "chart.line.uptrend.xyaxis", selectedIcon: "chart.line.uptrend.xyaxis"),
         TabItem(title: "Search", icon: "magnifyingglass", selectedIcon: "magnifyingglass")
@@ -18,7 +19,7 @@ struct MainTabView: View {
             ZStack {
                 switch selectedTab {
                 case 0:
-                    ActiveWorkoutView(context: viewContext)
+                    HomeView(context: viewContext)
                 case 1:
                     HistoryView(context: viewContext)
                 case 2:
@@ -26,7 +27,7 @@ struct MainTabView: View {
                 case 3:
                     SearchView()
                 default:
-                    ActiveWorkoutView(context: viewContext)
+                    HomeView(context: viewContext)
                 }
             }
 

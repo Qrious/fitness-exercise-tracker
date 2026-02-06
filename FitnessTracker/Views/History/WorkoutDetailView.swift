@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreData
 
 struct WorkoutDetailView: View {
     @Environment(\.dismiss) var dismiss
@@ -113,7 +114,7 @@ struct ExerciseDetailCard: View {
                                     VStack(alignment: .trailing, spacing: 2) {
                                         Text("\(Int(set.weight))")
                                             .font(.headline)
-                                        Text("lbs")
+                                        Text("kg")
                                             .font(.caption)
                                             .foregroundStyle(.secondary)
                                     }

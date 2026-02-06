@@ -2,13 +2,17 @@ import Foundation
 import CoreData
 
 @objc(ExerciseEntity)
-public class ExerciseEntity: NSManagedObject {
+public class ExerciseEntity: NSManagedObject, Identifiable {
     @NSManaged public var id: UUID
     @NSManaged public var name: String
     @NSManaged public var notes: String?
     @NSManaged public var createdAt: Date
     @NSManaged public var sets: NSSet?
     @NSManaged public var workout: WorkoutEntity?
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<ExerciseEntity> {
+        return NSFetchRequest<ExerciseEntity>(entityName: "ExerciseEntity")
+    }
 
     var setsArray: [WorkoutSetEntity] {
         let set = sets as? Set<WorkoutSetEntity> ?? []

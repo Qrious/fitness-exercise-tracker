@@ -40,7 +40,7 @@ struct GlassCard<Content: View>: View {
                 VStack(alignment: .leading, spacing: DesignConstants.spacingSmall) {
                     Text("Bench Press")
                         .font(.headline)
-                    Text("3 sets • 135 lbs")
+                    Text("3 sets • 135 kg")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }

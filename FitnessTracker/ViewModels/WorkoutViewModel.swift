@@ -7,7 +7,7 @@ class WorkoutViewModel: ObservableObject {
     @Published var exercises: [ExerciseEntity] = []
     @Published var isWorkoutActive = false
 
-    private let viewContext: NSManagedObjectContext
+    let viewContext: NSManagedObjectContext
     private var cancellables = Set<AnyCancellable>()
 
     init(context: NSManagedObjectContext) {
@@ -20,6 +20,7 @@ class WorkoutViewModel: ObservableObject {
         guard currentWorkout == nil else { return }
 
         let workout = WorkoutEntity(context: viewContext)
+        workout.id = UUID()
         workout.date = Date()
 
         // Calculate day number

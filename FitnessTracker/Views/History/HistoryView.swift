@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreData
 
 struct HistoryView: View {
     @StateObject private var viewModel: HistoryViewModel

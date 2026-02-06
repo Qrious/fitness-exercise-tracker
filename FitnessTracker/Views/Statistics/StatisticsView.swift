@@ -1,5 +1,6 @@
 import SwiftUI
 import Charts
+import CoreData
 
 struct StatisticsView: View {
     @StateObject private var viewModel: StatisticsViewModel

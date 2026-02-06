@@ -48,7 +48,7 @@ struct ProgressChartView: View {
                     HStack {
                         Image(systemName: "trophy.fill")
                             .foregroundStyle(Color.accentYellow)
-                        Text("Personal Record: \(Int(maxWeight)) lbs")
+                        Text("Personal Record: \(Int(maxWeight)) kg")
                             .font(.subheadline)
                             .fontWeight(.medium)
                             .foregroundStyle(Color.darkText)
